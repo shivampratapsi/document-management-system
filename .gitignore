@@ -1,0 +1,15 @@
+# # Node modules
+# reactjsx/node_modules/
+# Server/node_modules/
+
+# # Build folders
+# reactjsx/dist/
+
+# # Sensitive files
+# Server/.env
+
+# # Uploaded files
+# Server/uploads/
+node_modules/
+.env
+uploads/
