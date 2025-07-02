@@ -1,0 +1,16 @@
+# Global ignores
+node_modules/
+.env
+dist/
+Uploads/
+.vscode/
+
+# Frontend specific (reactjsx)
+reactjsx/node_modules/
+reactjsx/dist/
+reactjsx/.env
+
+# Backend specific (Server)
+Server/node_modules/
+Server/.env
+Server/Uploads/
