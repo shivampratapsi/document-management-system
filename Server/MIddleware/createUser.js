@@ -1,8 +1,8 @@
 const User=require('../Models/UserSchema');
-
+const bcrypt=require('bcrypt');
 exports.createUser=async(req,res)=>{
     try{
-    const{userName,email,password,role}=req.body;
+    const{userName,email,password}=req.body;
     console.log(req.body);
 
     //user ko check karna hai ki already exist karta hai ya nahi
@@ -40,13 +40,3 @@ catch(error){
 
 
 
-
-//     try{
-//         const {name,email,password}=req.body;
-//         const user=await User.create({name,email,password});
-//         res.status(201).json({message:"User created successfully",user});
-//     }
-//     catch(error){
-//         res.status(500).json({message:"Internal server error",error:error.message});
-//     }
-// }

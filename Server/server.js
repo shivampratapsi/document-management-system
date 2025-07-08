@@ -1,12 +1,12 @@
 const express=require('express');
 const cors=require('cors');
 const dotenv=require('dotenv');
-require('./Connection/conn');
+const conn=require('./Connection/conn');
 const UserRoutes=require('./Routes/UserRoutes');
 
 // jo bhi .env me hoga vo load ho jaayega 
 dotenv.config();
-
+conn();
 const app=express();
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
