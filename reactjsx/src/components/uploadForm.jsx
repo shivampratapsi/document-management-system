@@ -21,12 +21,12 @@ formData.append('file',file);
 
 // form ko upload karenge 
 try {
-    const res=await axios.post('http://localhost:5000/api/files/upload',formData);
+    const res=await axios.post('http://localhost:3000/api/files/upload',formData);
     setMessage('Upload ho gaya 💯' + res.data.message);
 
     }
  catch (error) {
-    console.error(err);
+    console.error(error);
     setMessage('Nahi ho paaya 🥲')
     }
 };

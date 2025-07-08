@@ -1,16 +1,29 @@
 const express=require('express');
-const mongoose=require('mongoose');
 const cors=require('cors');
 const dotenv=require('dotenv');
+require('./Connection/conn');
+const UserRoutes=require('./Routes/UserRoutes');
 
 // jo bhi .env me hoga vo load ho jaayega 
 dotenv.config();
 
-const app=use('express');
+const app=express();
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
 
-const port=process.env.port || 3000;
-co
-mongoose.con
+app.use(cors());
+
+app.get('/',(req,res)=>{
+    res.send("hello world");
+});
+app.use(UserRoutes);
+
+
+
+const port=process.env.PORT || 3000;
+app.listen(port,()=>{
+    console.log(`server is running on http://localhost:${port}`);
+});
 
 
 
