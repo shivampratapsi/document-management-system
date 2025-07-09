@@ -1,5 +1,6 @@
 const User=require('../Models/UserSchema');
 const bcrypt=require('bcrypt');
+
 exports.createUser=async(req,res)=>{
     try{
     const{userName,email,password}=req.body;
@@ -9,9 +10,9 @@ exports.createUser=async(req,res)=>{
     const existingUser=await User.findOne({email});
     if(existingUser){
         console.log("user is already has account!",existingUser);
-        return res.status(400).json({message:"User existed",});
-
+        return res.status(400).json({message:"User existed 👁️👁️" });
     }
+
     //some valid email domains 
     const validDomains = [
         "@gmail.com",
@@ -29,27 +30,27 @@ exports.createUser=async(req,res)=>{
         console.log("Not permit other domains ! 🙅🏻");
         return res.status(400).json({ message: "Kindly use valid domains for registration! 🙅🏻" });
     }
-    
     //password length check karna hai
-        if(password.length<8){
-            console.log("password must have length greater than 8");
-            return res.status(400).json({message:"Must have 8 characters"});
-    
+    if(password.length<8){
+        console.log("password must have length greater than 8");
+        return res.status(400).json({message:"Must have 8 characters"});
     }
-const hashPassword=await bcrypt.hash(password,10);
-
-const user=await User.create({
-    userName,
-    email,
-    password:hashPassword,
-    role:'viewer'
-});
-return res.status(201).json({message:"user created successfully",user:{
-    id:user._id,
-    userName:user.userName,
-    email:user.email,
-    role:user.role}
-});
+    const hashPassword=await bcrypt.hash(password,10);
+    const user=await User.create({
+        userName,
+        email,
+        password:hashPassword,
+        role:'viewer'
+    });
+    return res.status(201).json({
+        message: "user created successfully",
+        user: {
+            id: user._id,
+            userName: user.userName,
+            email: user.email,
+            role: user.role
+        }
+    });
 }
 catch(error){
     console.error(error);
