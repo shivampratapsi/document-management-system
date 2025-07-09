@@ -1,6 +1,7 @@
 const express=require('express');
 const UserRoutes=express.Router();
-const {createUser, loginUser}=require('../MIddleware/createUser');
+const {createUser}=require('../MIddleware/createUser');
+const {loginUser}=require('../MIddleware/login');
 
 
 UserRoutes.post('/signup',createUser)
