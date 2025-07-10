@@ -1,11 +1,13 @@
 const express=require('express');
 const UserRoutes=express.Router();
-const {createUser}=require('../MIddleware/createUser');
-const {loginUser}=require('../MIddleware/login');
+const {signupAuth}=require('../MIddleware/signupAuth');
+const {loginAuth}=require('../MIddleware/loginAuth');
+const {createUser}=require('../Controllers/createUser');
+const {loginUser}=require('../Controllers/loginUser');
 
 
-UserRoutes.post('/signup',createUser)
-UserRoutes.post('/login',loginUser)
+UserRoutes.post('/signup',signupAuth,createUser)
+UserRoutes.post('/login',loginAuth,loginUser)
 module.exports=UserRoutes;
 
 

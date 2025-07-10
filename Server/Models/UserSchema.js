@@ -17,15 +17,10 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    role: {
-        type: String,
-        enum: ['admin', 'editor', 'viewer'],
-        default: 'viewer'
-    },
     permissions: {
         canUpload: {
             type: Boolean,
-            default: false
+            default: true
         },
         canDownload: {
             type: Boolean,
@@ -33,11 +28,11 @@ const UserSchema = new mongoose.Schema({
         },
         canManageVersions: {
             type: Boolean,
-            default: false
+            default: true
         },
         canShare: {
             type: Boolean,
-            default: false
+            default: true
         }
     },
     
