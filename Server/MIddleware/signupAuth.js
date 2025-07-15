@@ -1,8 +1,9 @@
 const User=require('../Models/UserSchema');
+const { passwordStrength } = require('../utils/passwordStrength');
 
 exports.signupAuth=async(req,res,next)=>{
     try{
-    const{userName,email,password}=req.body;
+    const{email,password}=req.body;
 
     console.log(req.body);
 
@@ -30,13 +31,13 @@ exports.signupAuth=async(req,res,next)=>{
         console.log("Not permit other domains ! 🙅🏻");
         return res.status(400).json({ message: "Kindly use valid domains for registration! 🙅🏻" });
     }
-    //password length check karna hai
-    if(password.length<8){
-        console.log("password must have length greater than 8");
-        return res.status(400).json({message:"Must have 8 characters"});
+   
+    const checkpasswordStrength = await passwordStrength(password);
+    if(!checkpasswordStrength){
+        console.log("password is not strong enough");
+        return res.status(400).json({message:"password is not strong enough"});
     }
-    
-    // If all validation passes, move to next middleware/controller
+    //agar sahi hai toh next controller me jayega
     next();
 }
 catch(error){
